@@ -49,7 +49,6 @@
                       
                     </div>
                     <div class="col-lg-8 align-self-baseline">
-                        <h2 class="text-white mt-0">"La Salud es lo mas Importante"</h2>
                         <a class="btn btn-primary btn-xl" href="#contact">Realizar cita</a>
                     </div>
                 </div>
@@ -191,6 +190,7 @@
                         <!-- * * * * * * * * * * * * * * *-->
                         <!-- * * SB Forms Contact Form * *-->
                         <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
                         <!-- This form is pre-integrated with SB Forms.-->
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
@@ -198,37 +198,43 @@
                         <form id="contactForm" >
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" nombre="nombre" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                <label for="name">Full name</label>
+                                <input class="form-control" name="nombre" type="text" placeholder="Para continuar Ingresa tu nombre completo..." data-sb-validations="required" />
+                                <label for="name">Nombre Completo</label>
                                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control"  name="correo"  type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
+                                <label for="email">Correo Electronico</label>
                                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
                                 <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
                                 <input class="form-control" name="numero" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                <label for="phone">Phone number</label>
+                                <label for="phone">Numero de contacto</label>
                                 <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                             </div>
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" name="mensaje"mensaje"type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                <label for="message">Message</label>
+                                <textarea class="form-control" name="mensaje"mensaje"type="text" placeholder="Ingresa el dia  de tu cita..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <label for="message">Ingresa el dia  que necesitaria la cita "esto no garantiza el dia exacto por cuestiones de citas previas agendadas"</label>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                             </div>
                      
   
                             <!-- Submit Button-->
                             <div class="d-grid">
-                                <a class="btn btn-primary btn-xl" id="button">Realizar cita</a>
-
+                                <!---<a class="btn btn-primary btn-xl" id="button" type="submit">Realizar cita</a>--->
+                                <input  class="btn btn-primary btn-xl" type="submit" id="button" value="Enviar" >
                             </div>
                         </form>
+                        <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('user_HJkgGfSxGvWE1QNUU2ME5')
+</script>
                     </div>
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -240,11 +246,13 @@
                     </div>
                 </div>
             </div>
+            
         </section>
         <!-- Footer-->
         <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 -Laboratorios Novavid </div></div>
         </footer>
+        <script></script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- SimpleLightbox plugin JS-->
@@ -256,5 +264,27 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            const btn = document.getElementById('button');
+
+document.getElementById('contactForm')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Enviando...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_3io8ju6';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('mensae enviado correctamente');
+    }, (err) => {
+      btn.value = 'Error al enviar mensaje';
+      alert(JSON.stringify(err));
+    });
+});
+        </script>
     </body>
 </html>
