@@ -69,7 +69,7 @@
   right: 15px;
   border-radius: 50%;
   transition: .3s;
-  background-color: #77bb4a;
+  background-color: #66ff00;
   animation: pulse 1.2s 4.0s ease 4;
 }
 
@@ -127,13 +127,13 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: #4cc370;
+  background-color: #3d9e5a;
   -webkit-box-shadow: 1px 1px 2px 0px rgba(68, 68, 68, 0.705);
   -moz-box-shadow: 1px 1px 2px 0px rgba(68, 68, 68, 0.705);
   box-shadow: 1px 1px 2px 0px rgba(68, 68, 68, 0.705);
 }
 .closePopup:hover {
-  background-color: #3d9e5a;
+  background-color: #00ff4c;
   transition: .3s;
 }
 
